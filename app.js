@@ -1,7 +1,6 @@
 const express = require('express')
 const fs = require('fs');
 const app = express()
-const port = 3000
 app.use(express.json());
 
 app.post('/student/add' , (req,res) =>{
@@ -19,6 +18,4 @@ app.get('/student/studentsList' , (req,res)=>{
     let data = fs.readFileSync('students.json');
     res.send(JSON.parse(data));
 });
-app.listen(port, () => {
-    console.log(`App is listening at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || 8080);
